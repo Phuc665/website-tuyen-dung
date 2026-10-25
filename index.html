@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JobViet - Cổng Tuyển Dụng Hàng Đầu Việt Nam</title>
+  <meta name="description" content="JobViet - Nền tảng tuyển dụng và tìm kiếm việc làm hàng đầu Việt Nam. Kết nối ứng viên tài năng với nhà tuyển dụng uy tín." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#" class="nav-logo" id="nav-logo-link">
+        <div class="logo-icon">💼</div>
+        <span class="logo-text">Job<span class="logo-accent">Viet</span></span>
+      </a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#home" class="nav-link active" id="nav-home">Trang chủ</a></li>
+        <li><a href="#jobs" class="nav-link" id="nav-jobs">Việc làm</a></li>
+        <li><a href="#companies" class="nav-link" id="nav-companies">Công ty</a></li>
+        <li><a href="#candidates" class="nav-link" id="nav-candidates">Ứng viên</a></li>
+        <li><a href="#blog" class="nav-link" id="nav-blog">Blog</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="btn-ghost" id="btn-login" onclick="showModal('loginModal')">Đăng nhập</button>
+        <button class="btn-primary" id="btn-register" onclick="showModal('registerModal')">Đăng ký</button>
+        <button class="hamburger" id="hamburger" onclick="toggleMenu()">☰</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== HERO SECTION ===== -->
+  <section class="hero" id="home">
+    <div class="hero-bg">
+      <div class="hero-orb orb-1"></div>
+      <div class="hero-orb orb-2"></div>
+      <div class="hero-orb orb-3"></div>
+      <div class="grid-overlay"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-badge" id="hero-badge">🚀 Hơn 50.000+ việc làm đang chờ bạn</div>
+      <h1 class="hero-title" id="hero-title">
+        Tìm Kiếm <span class="gradient-text">Công Việc Mơ Ước</span><br />Của Bạn Ngay Hôm Nay
+      </h1>
+      <p class="hero-subtitle" id="hero-subtitle">
+        Kết nối với hàng nghìn nhà tuyển dụng uy tín trên toàn quốc.<br />
+        Cơ hội nghề nghiệp lý tưởng chỉ cách bạn một cú click.
+      </p>
+
+      <!-- Search Box -->
+      <div class="search-box" id="search-box">
+        <div class="search-field" id="search-field-job">
+          <span class="search-icon">🔍</span>
+          <input type="text" placeholder="Chức danh, từ khóa việc làm..." id="search-keyword" class="search-input" />
+        </div>
+        <div class="search-divider"></div>
+        <div class="search-field" id="search-field-location">
+          <span class="search-icon">📍</span>
+          <select class="search-input" id="search-location">
+            <option value="">Chọn thành phố...</option>
+            <option value="hcm">TP. Hồ Chí Minh</option>
+            <option value="hn">Hà Nội</option>
+            <option value="dn">Đà Nẵng</option>
+            <option value="ct">Cần Thơ</option>
+            <option value="hp">Hải Phòng</option>
+            <option value="other">Tỉnh khác</option>
+          </select>
+        </div>
+        <button class="btn-search" id="btn-search" onclick="searchJobs()">Tìm kiếm</button>
+      </div>
+
+      <!-- Tags -->
+      <div class="search-tags" id="search-tags">
+        <span class="tag-label">Phổ biến:</span>
+        <button class="tag" onclick="quickSearch('Lập trình viên')">Lập trình viên</button>
+        <button class="tag" onclick="quickSearch('Marketing')">Marketing</button>
+        <button class="tag" onclick="quickSearch('Kế toán')">Kế toán</button>
+        <button class="tag" onclick="quickSearch('Thiết kế')">Thiết kế</button>
+        <button class="tag" onclick="quickSearch('Bán hàng')">Bán hàng</button>
+      </div>
+
+      <!-- Stats -->
+      <div class="hero-stats" id="hero-stats">
+        <div class="stat-item">
+          <div class="stat-number" data-target="52000">0</div>
+          <div class="stat-label">Việc làm</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <div class="stat-number" data-target="3500">0</div>
+          <div class="stat-label">Công ty</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <div class="stat-number" data-target="180000">0</div>
+          <div class="stat-label">Ứng viên</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CATEGORIES ===== -->
+  <section class="section" id="categories">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">Khám phá ngay</span>
+        <h2 class="section-title">Tìm Việc Theo <span class="gradient-text">Ngành Nghề</span></h2>
+        <p class="section-subtitle">Chọn lĩnh vực phù hợp với chuyên môn và đam mê của bạn</p>
+      </div>
+      <div class="categories-grid" id="categories-grid">
+        <!-- JS will render -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FEATURED JOBS ===== -->
+  <section class="section section-dark" id="jobs">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">Hot Jobs</span>
+        <h2 class="section-title">Việc Làm <span class="gradient-text">Nổi Bật</span></h2>
+        <p class="section-subtitle">Được cập nhật hàng ngày từ các công ty hàng đầu</p>
+      </div>
+
+      <!-- Filter Bar -->
+      <div class="filter-bar" id="filter-bar">
+        <button class="filter-btn active" id="filter-all" onclick="filterJobs('all')">Tất cả</button>
+        <button class="filter-btn" id="filter-fulltime" onclick="filterJobs('fulltime')">Toàn thời gian</button>
+        <button class="filter-btn" id="filter-parttime" onclick="filterJobs('parttime')">Bán thời gian</button>
+        <button class="filter-btn" id="filter-remote" onclick="filterJobs('remote')">Remote</button>
+        <button class="filter-btn" id="filter-intern" onclick="filterJobs('intern')">Thực tập</button>
+      </div>
+
+      <div class="jobs-grid" id="jobs-grid">
+        <!-- JS will render -->
+      </div>
+
+      <div class="section-footer">
+        <button class="btn-outline" id="btn-view-all" onclick="viewAllJobs()">Xem tất cả việc làm →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== COMPANIES ===== -->
+  <section class="section" id="companies">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">Đối tác tin cậy</span>
+        <h2 class="section-title">Công Ty <span class="gradient-text">Nổi Tiếng</span></h2>
+        <p class="section-subtitle">Hàng nghìn doanh nghiệp hàng đầu đang tuyển dụng</p>
+      </div>
+      <div class="companies-grid" id="companies-grid">
+        <!-- JS will render -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== HOW IT WORKS ===== -->
+  <section class="section section-dark" id="how-it-works">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">Hướng dẫn</span>
+        <h2 class="section-title">Cách Thức <span class="gradient-text">Hoạt Động</span></h2>
+        <p class="section-subtitle">Chỉ 3 bước đơn giản để tìm được công việc mơ ước</p>
+      </div>
+      <div class="steps-grid" id="steps-grid">
+        <div class="step-card">
+          <div class="step-number">01</div>
+          <div class="step-icon">📝</div>
+          <h3 class="step-title">Tạo Hồ Sơ</h3>
+          <p class="step-desc">Đăng ký tài khoản và điền thông tin cá nhân, kinh nghiệm, kỹ năng của bạn một cách dễ dàng.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">02</div>
+          <div class="step-icon">🔍</div>
+          <h3 class="step-title">Tìm Việc Phù Hợp</h3>
+          <p class="step-desc">Sử dụng bộ lọc thông minh để tìm kiếm việc làm theo ngành nghề, địa điểm và mức lương mong muốn.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">03</div>
+          <div class="step-icon">🚀</div>
+          <h3 class="step-title">Ứng Tuyển & Thành Công</h3>
+          <p class="step-desc">Gửi hồ sơ trực tuyến, theo dõi trạng thái ứng tuyển và nhận thông báo phỏng vấn ngay lập tức.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TESTIMONIALS ===== -->
+  <section class="section" id="candidates">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">Câu chuyện thành công</span>
+        <h2 class="section-title">Họ Đã <span class="gradient-text">Thành Công</span></h2>
+        <p class="section-subtitle">Hàng nghìn ứng viên đã tìm được việc làm lý tưởng qua JobViet</p>
+      </div>
+      <div class="testimonials-grid" id="testimonials-grid">
+        <!-- JS will render -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA BANNER ===== -->
+  <section class="cta-section" id="cta-section">
+    <div class="cta-bg">
+      <div class="cta-orb orb-1"></div>
+      <div class="cta-orb orb-2"></div>
+    </div>
+    <div class="container">
+      <div class="cta-content" id="cta-content">
+        <h2 class="cta-title">Bạn Là Nhà Tuyển Dụng?</h2>
+        <p class="cta-subtitle">Đăng tin tuyển dụng miễn phí và tiếp cận hàng trăm nghìn ứng viên tiềm năng</p>
+        <div class="cta-actions">
+          <button class="btn-cta-primary" id="btn-post-job" onclick="showModal('loginModal')">Đăng Tin Ngay</button>
+          <button class="btn-cta-ghost" id="btn-learn-more">Tìm Hiểu Thêm</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== BLOG ===== -->
+  <section class="section section-dark" id="blog">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">Chia sẻ kiến thức</span>
+        <h2 class="section-title">Blog <span class="gradient-text">Nghề Nghiệp</span></h2>
+        <p class="section-subtitle">Mẹo tìm việc, kỹ năng phỏng vấn và xu hướng thị trường lao động</p>
+      </div>
+      <div class="blog-grid" id="blog-grid">
+        <!-- JS will render -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer" id="footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a href="#" class="nav-logo">
+              <div class="logo-icon">💼</div>
+              <span class="logo-text">Job<span class="logo-accent">Viet</span></span>
+            </a>
+            <p class="footer-desc">Nền tảng tuyển dụng hàng đầu Việt Nam, kết nối ứng viên với nhà tuyển dụng uy tín trên toàn quốc.</p>
+            <div class="social-links">
+              <a href="#" class="social-btn" id="social-fb">📘</a>
+              <a href="#" class="social-btn" id="social-tw">🐦</a>
+              <a href="#" class="social-btn" id="social-li">💼</a>
+              <a href="#" class="social-btn" id="social-yt">▶️</a>
+            </div>
+          </div>
+          <div class="footer-links-col">
+            <h4 class="footer-heading">Ứng viên</h4>
+            <ul class="footer-links">
+              <li><a href="#jobs">Tìm việc làm</a></li>
+              <li><a href="#">Tạo CV trực tuyến</a></li>
+              <li><a href="#">Cẩm nang tìm việc</a></li>
+              <li><a href="#">Công cụ tính lương</a></li>
+            </ul>
+          </div>
+          <div class="footer-links-col">
+            <h4 class="footer-heading">Nhà tuyển dụng</h4>
+            <ul class="footer-links">
+              <li><a href="#">Đăng tin tuyển dụng</a></li>
+              <li><a href="#">Tìm kiếm ứng viên</a></li>
+              <li><a href="#">Bảng giá dịch vụ</a></li>
+              <li><a href="#">Hướng dẫn sử dụng</a></li>
+            </ul>
+          </div>
+          <div class="footer-links-col">
+            <h4 class="footer-heading">Liên hệ</h4>
+            <ul class="footer-links">
+              <li>📍 123 Nguyễn Huệ, Q.1, TP.HCM</li>
+              <li>📞 1900 1234</li>
+              <li>✉️ support@jobviet.vn</li>
+              <li>🕐 T2 - T6: 8:00 - 18:00</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <p>© 2025 JobViet. Tất cả quyền được bảo lưu.</p>
+        <div class="footer-legal">
+          <a href="#">Điều khoản sử dụng</a>
+          <a href="#">Chính sách bảo mật</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== MODALS ===== -->
+  <!-- Login Modal -->
+  <div class="modal-overlay" id="loginModal" onclick="closeModalOutside(event, 'loginModal')">
+    <div class="modal" id="login-modal-box">
+      <button class="modal-close" onclick="closeModal('loginModal')">✕</button>
+      <div class="modal-header">
+        <div class="modal-logo">💼</div>
+        <h2 class="modal-title">Đăng Nhập</h2>
+        <p class="modal-subtitle">Chào mừng bạn trở lại JobViet</p>
+      </div>
+      <form class="modal-form" id="login-form" onsubmit="handleLogin(event)">
+        <div class="form-group">
+          <label class="form-label">Email</label>
+          <input type="email" class="form-input" id="login-email" placeholder="your@email.com" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Mật khẩu</label>
+          <div class="input-with-icon">
+            <input type="password" class="form-input" id="login-password" placeholder="••••••••" required />
+            <button type="button" class="toggle-password" onclick="togglePassword('login-password')">👁</button>
+          </div>
+        </div>
+        <div class="form-row">
+          <label class="checkbox-label">
+            <input type="checkbox" id="remember-me" /> Ghi nhớ đăng nhập
+          </label>
+          <a href="#" class="forgot-link">Quên mật khẩu?</a>
+        </div>
+        <button type="submit" class="btn-modal-submit" id="login-submit">Đăng Nhập</button>
+        <p class="modal-switch">Chưa có tài khoản? <a href="#" onclick="switchModal('loginModal','registerModal')">Đăng ký ngay</a></p>
+      </form>
+    </div>
+  </div>
+
+  <!-- Register Modal -->
+  <div class="modal-overlay" id="registerModal" onclick="closeModalOutside(event, 'registerModal')">
+    <div class="modal" id="register-modal-box">
+      <button class="modal-close" onclick="closeModal('registerModal')">✕</button>
+      <div class="modal-header">
+        <div class="modal-logo">🚀</div>
+        <h2 class="modal-title">Tạo Tài Khoản</h2>
+        <p class="modal-subtitle">Bắt đầu hành trình tìm việc của bạn</p>
+      </div>
+
+      <!-- Role Switch -->
+      <div class="role-switch" id="role-switch">
+        <button class="role-btn active" id="role-candidate" onclick="switchRole('candidate')">👤 Ứng viên</button>
+        <button class="role-btn" id="role-employer" onclick="switchRole('employer')">🏢 Nhà tuyển dụng</button>
+      </div>
+
+      <form class="modal-form" id="register-form" onsubmit="handleRegister(event)">
+        <div class="form-group">
+          <label class="form-label">Họ và tên</label>
+          <input type="text" class="form-input" id="reg-name" placeholder="Nguyễn Văn A" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email</label>
+          <input type="email" class="form-input" id="reg-email" placeholder="your@email.com" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Số điện thoại</label>
+          <input type="tel" class="form-input" id="reg-phone" placeholder="0901 234 567" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Mật khẩu</label>
+          <div class="input-with-icon">
+            <input type="password" class="form-input" id="reg-password" placeholder="Ít nhất 8 ký tự" required />
+            <button type="button" class="toggle-password" onclick="togglePassword('reg-password')">👁</button>
+          </div>
+        </div>
+        <div class="form-group" id="company-field" style="display:none">
+          <label class="form-label">Tên công ty</label>
+          <input type="text" class="form-input" id="reg-company" placeholder="Tên công ty của bạn" />
+        </div>
+        <label class="checkbox-label terms-check">
+          <input type="checkbox" id="agree-terms" required />
+          Tôi đồng ý với <a href="#">Điều khoản dịch vụ</a> và <a href="#">Chính sách bảo mật</a>
+        </label>
+        <button type="submit" class="btn-modal-submit" id="register-submit">Tạo Tài Khoản</button>
+        <p class="modal-switch">Đã có tài khoản? <a href="#" onclick="switchModal('registerModal','loginModal')">Đăng nhập</a></p>
+      </form>
+    </div>
+  </div>
+
+  <!-- Job Detail Modal -->
+  <div class="modal-overlay" id="jobModal" onclick="closeModalOutside(event, 'jobModal')">
+    <div class="modal modal-wide" id="job-modal-box">
+      <button class="modal-close" onclick="closeModal('jobModal')">✕</button>
+      <div id="job-detail-content"><!-- filled by JS --></div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast">
+    <span class="toast-icon" id="toast-icon">✅</span>
+    <span class="toast-msg" id="toast-msg">Thành công!</span>
+  </div>
+
+  <!-- Scroll to top -->
+  <button class="scroll-top" id="scroll-top" onclick="scrollToTop()">↑</button>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
